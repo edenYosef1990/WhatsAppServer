@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using EdenWhatsApp.Models;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,10 @@ namespace EdenWhatsApp.Hubs
 {
     public class ChatHub : Hub
     {
-        //public async Task BroadcastMessage()
+        public async Task BroadcastChatData(List<MessageModel> data)
+        {
+            await Clients.All.SendAsync("broadcastChatData", data);
+        }
     }
 
 }

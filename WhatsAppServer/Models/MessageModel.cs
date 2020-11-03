@@ -7,12 +7,11 @@ namespace EdenWhatsApp.Models
 {
     public class MessageModel
     {
-        public MessageModel(string text)
+        public MessageModel()
         {
-            Text = text;
+            text = "";
         }
-
-        public string Text { get; set; }
+        public string text { get; set; }
     }
 
 }

@@ -11,8 +11,8 @@ namespace EdenWhatsApp.DataStorage
         public static List<MessageModel> GetData()
         {
             return new List<MessageModel> { 
-                new MessageModel("בדיקה1"),
-                new MessageModel("בדיקה2") 
+                new MessageModel(){text = "בדיקה1" },
+                new MessageModel(){text = "בדיקה3" }
             };
         }
     }
