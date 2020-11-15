@@ -16,11 +16,11 @@ namespace EdenWhatsApp.Controllers
     [ApiController]
     public class ChatController : ControllerBase
     {
-        private IMessageRepoistory _repository;
+        private IMessageRepoistoryService _repository;
         private readonly IHubContext<ChatHub> _hub;
         private TimerManager _timerManager;
 
-        public ChatController(IHubContext<ChatHub> hub , IMessageRepoistory repoistory)
+        public ChatController(IHubContext<ChatHub> hub , IMessageRepoistoryService repoistory)
         {
             _repository = repoistory;
             _hub = hub;

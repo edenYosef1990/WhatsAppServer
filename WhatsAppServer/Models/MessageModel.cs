@@ -11,6 +11,7 @@ namespace EdenWhatsApp.Models
         {
             text = "";
         }
+        public int clientID { get; set; }
         public string text { get; set; }
     }
 

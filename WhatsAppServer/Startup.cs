@@ -24,7 +24,7 @@ namespace WhatsAppServer
                 .AllowAnyHeader()
                 .AllowCredentials());
             });
-            services.AddSingleton<IMessageRepoistory, MessageRepository>();
+            services.AddSingleton<IMessageRepoistoryService, MessageRepositoryService>();
             services.AddControllers();
             services.AddSignalR();
         }

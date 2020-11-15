@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace WhatsAppServer.Services
 {
-    public interface IMessageRepoistory
+    public interface IMessageRepoistoryService
     {
         Subject<MessageModel> MessageObservable { get; }
         void InsertMessage(MessageModel message);
-        IObservable<MessageModel> StreamMessages();
+        int GetNewUserId();
     }
 }

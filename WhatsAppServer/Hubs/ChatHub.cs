@@ -14,13 +14,15 @@ namespace EdenWhatsApp.Hubs
 {
     public class ChatHub : Hub
     {
+        private int newestId = 0;
 
-        private IMessageRepoistory _messageRepository;
+        private IMessageRepoistoryService _messageRepository;
 
-        public ChatHub(IMessageRepoistory messageRepoistory)
+        public ChatHub(IMessageRepoistoryService messageRepoistory)
         {
             _messageRepository = messageRepoistory;
         }
+
         public async Task BroadcastChatData(MessageModel data)
         {
             _messageRepository.InsertMessage(data);
@@ -38,11 +40,10 @@ namespace EdenWhatsApp.Hubs
             _messageRepository.InsertMessage(message);
         }
 
-        public IObservable<MessageModel> ObserveMessages()
+        public int SendNewId()
         {
-            return _messageRepository.MessageObservable;
+            return _messageRepository.GetNewUserId();
         }
-
         public IAsyncEnumerable<MessageModel> StreamMessages()
         {
             return _messageRepository.MessageObservable.ToAsyncEnumerable();

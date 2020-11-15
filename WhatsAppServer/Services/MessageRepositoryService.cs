@@ -7,11 +7,18 @@ using System.Threading.Tasks;
 
 namespace WhatsAppServer.Services
 {
-    public class MessageRepository : IMessageRepoistory
+    public class MessageRepositoryService : IMessageRepoistoryService
     {
+        private int newestId = 0;
+
         public Subject<MessageModel> MessageObservable { get; }
 
-        public MessageRepository()
+        public int GetNewUserId()
+        {
+            return newestId++;
+        }
+
+        public MessageRepositoryService()
         {
             MessagesList = new List<MessageModel>();
             MessageObservable = new Subject<MessageModel>();
@@ -22,11 +29,6 @@ namespace WhatsAppServer.Services
         {
             MessageObservable.OnNext(message);
             MessagesList.Add(message);
-        }
-
-        public IObservable<MessageModel> StreamMessages()
-        {
-            throw new NotImplementedException();
         }
 
         public List<MessageModel> MessagesList { get; set; }
